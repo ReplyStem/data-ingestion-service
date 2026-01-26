@@ -23,6 +23,8 @@ services:
     environment:
       DATABASE_URL: postgresql+asyncpg://postgres.yejyjlowfczcdbsrtuom:zgGSh86li5PHp4pV@aws-1-ap-south-1.pooler.supabase.com:5432/postgres
       TENANT_SERVICE_URL: http://tenant_service:8008
+      SQS_QUEUE_URL: https://sqs.ap-south-1.amazonaws.com/604475638033/classification-queue-dev.fifo
+      AWS_REGION: ap-south-1
       LOG_LEVEL: INFO
     networks:
       - replystem-network
