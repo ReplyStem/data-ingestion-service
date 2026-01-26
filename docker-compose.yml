@@ -17,15 +17,22 @@ services:
 
   data-ingestion-service:
     build: .
+    container_name: data_ingestion_service
     ports:
       - "80:8002"
     environment:
       DATABASE_URL: postgresql+asyncpg://postgres:11gI{f$!UHjS(;lu@db.yejyjlowfczcdbsrtuom.supabase.co:5432/postgres
-      TENANT_SERVICE_URL: http://replystem-dev.duckdns.org:8008
+      TENANT_SERVICE_URL: http://tenant_service:8008
       LOG_LEVEL: INFO
+    networks:
+      - replystem-network
     # depends_on:
     #   postgres:
     #     condition: service_healthy
+
+networks:
+  replystem-network:
+    external: true
 
 # volumes:
 #   postgres_data:
