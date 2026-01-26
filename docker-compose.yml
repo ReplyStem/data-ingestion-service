@@ -18,7 +18,7 @@ services:
   data-ingestion-service:
     build: .
     ports:
-      - "8002:8002"
+      - "80:8002"
     environment:
       DATABASE_URL: postgresql+asyncpg://postgres:11gI{f$!UHjS(;lu@db.yejyjlowfczcdbsrtuom.supabase.co:5432/postgres
       TENANT_SERVICE_URL: http://replystem-dev.duckdns.org:8008
