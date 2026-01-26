@@ -21,7 +21,7 @@ services:
     ports:
       - "80:8002"
     environment:
-      DATABASE_URL: postgresql+asyncpg://postgres:11gI{f$!UHjS(;lu@db.yejyjlowfczcdbsrtuom.supabase.co:5432/postgres
+      DATABASE_URL: postgresql+asyncpg://postgres.yejyjlowfczcdbsrtuom:zgGSh86li5PHp4pV@aws-1-ap-south-1.pooler.supabase.com:5432/postgres
       TENANT_SERVICE_URL: http://tenant_service:8008
       LOG_LEVEL: INFO
     networks:
