@@ -6,7 +6,7 @@ API endpoints for receiving platform webhooks.
 
 import logging
 
-from fastapi import APIRouter, Request, Header, HTTPException
+from fastapi import APIRouter, Request, Header, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from db.session import get_session_factory
@@ -70,11 +70,13 @@ async def meta_webhook(
 
 @router.get("/meta/{tenant_id}")
 async def meta_webhook_verify(
-    hub_mode: str = "",
-    hub_verify_token: str = "",
-    hub_challenge: str = "",
+    tenant_id: str,
+    hub_mode: str = Query(default="", alias="hub.mode"),
+    hub_verify_token: str = Query(default="", alias="hub.verify_token"),
+    hub_challenge: str = Query(default="", alias="hub.challenge"),
 ):
     """Meta webhook verification challenge."""
+    logger.info(f"Meta verification: mode={hub_mode}, token={hub_verify_token}, challenge={hub_challenge}")
     # TODO: Verify token against tenant_service
     if hub_mode == "subscribe":
         return int(hub_challenge)
